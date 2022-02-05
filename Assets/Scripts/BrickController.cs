@@ -12,6 +12,10 @@ public class BrickController : MonoBehaviour
 
     public GameMaster gameMaster;
 
+    public int whichpowerup;
+    public Transform powerupExtend;
+    public Transform powerupSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +36,18 @@ public class BrickController : MonoBehaviour
         {
             gameMaster.playerPoints = gameMaster.playerPoints + brickValue;
             Destroy(this.gameObject);
+        }
+
+        whichpowerup = Random.Range(1, 10);
+
+        if (whichpowerup == 1)
+        {
+            Instantiate(powerupExtend, transform.position, powerupExtend.rotation);
+        }
+
+        if (whichpowerup == 2)
+        {
+            Instantiate(powerupSpeed, transform.position, powerupSpeed.rotation);
         }
     }
 }

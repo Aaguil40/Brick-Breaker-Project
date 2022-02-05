@@ -12,12 +12,16 @@ public class BallController : MonoBehaviour
     public Vector3 startPosition;
     public GameMaster gameMaster;
 
+    public PaddleController paddleController;
+
 
     // Start is called before the first frame update
     void Start()
     {
         ballRigidbody = GetComponent<Rigidbody2D>();
         gameMaster.GetComponent<GameMaster>();
+
+        paddleController.GetComponent<PaddleController>();
 }
 
     // Update is called once per frame
@@ -38,6 +42,9 @@ public class BallController : MonoBehaviour
             gameMaster.playerLives--;
             transform.position = startPosition;
             balllaunched = false;
+
+            paddleController.paddleSpeed = 10;
+            paddleController.GetComponent<Transform>().localScale = new Vector2(3, .3f);
         }
     }
 }
